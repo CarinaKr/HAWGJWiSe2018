@@ -29,11 +29,11 @@ public class Collectable : MonoBehaviour {
     public void Respawn()
     {
         bool[] pA = GameManager.self.playersAlife;
-        int randColor;
-        //do
-        //{
-
-        //}
+        int randColor=0;
+        do
+        {
+            randColor=Random.R
+        } while (pA[randColor]);
     }
 }
 

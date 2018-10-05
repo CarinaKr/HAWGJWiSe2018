@@ -1,2 +1,0 @@
-F:\github\HAWGJWiSe2018\HAWGJWiSe2018\Temp\UnityVS_obj\Debug\Unity.TextMeshPro.csprojResolveAssemblyReference.cache
-F:\github\HAWGJWiSe2018\HAWGJWiSe2018\Temp\UnityVS_obj\Debug\Unity.TextMeshPro.csproj.CoreCompileInputs.cache
