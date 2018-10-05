@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     public float speed;
     public float jumpHeigt;
     public float maxGroundDistance;
+    public int playerNumber;
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -27,7 +28,7 @@ public class PlayerMovement : MonoBehaviour {
             jumpCount = 0;
         }
 
-        if(Input.GetButtonDown("Jump")&&jumpCount<maxJumpCount)
+        if(Input.GetButtonDown("Jump"+playerNumber)&&jumpCount<maxJumpCount)
         {
             Jump(jumpHeigt);
             jumpCount++;
@@ -35,16 +36,10 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        Move(Input.GetAxis("Horizontal")*speed);
+        Move(Input.GetAxis("Horizontal"+playerNumber)*speed);
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //if(collision.transform.tag=="Platform")
-        //{
-        //    jumpCount = 0;
-        //}
-    }
+    
 
     public void Move(float inputX)
     {
@@ -63,7 +58,6 @@ public class PlayerMovement : MonoBehaviour {
             Debug.DrawRay(transform.position, Vector2.down * maxGroundDistance, Color.green);
             if (Physics2D.Raycast(transform.position, Vector2.down * maxGroundDistance, maxGroundDistance, LayerMask.GetMask("Platform")))
             {
-                Debug.Log("isGrounded");
                 return true;
             }
             return false;
