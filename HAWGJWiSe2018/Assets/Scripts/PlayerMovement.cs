@@ -7,18 +7,20 @@ public class PlayerMovement : MonoBehaviour {
     public float speed;
     public float jumpHeigt;
     public float maxGroundDistance;
-    public int playerNumber;
+    public PlayerManager playerManager;
 
     private Rigidbody2D rb;
     private Vector2 movement;
     private int jumpCount;
     private int maxJumpCount = 2;
     private bool _isGrounded;
+    private int playerNumber;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         jumpCount = 0;
+        playerNumber = playerManager.playerNumber;
 	}
 
     private void Update()
