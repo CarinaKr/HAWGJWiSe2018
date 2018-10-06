@@ -6,11 +6,9 @@ public class Enums  {
 
     public enum Colors
     {
-        RED,
-        GREEN,
         BLUE,
+        GREEN,
         YELLOW,
-        PURPLE,
         MONSTER
     }
 }
