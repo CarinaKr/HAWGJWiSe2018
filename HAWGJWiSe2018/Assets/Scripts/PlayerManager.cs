@@ -75,7 +75,7 @@ public class PlayerManager : MonoBehaviour {
         }
         else
         {
-            gameManager.playersAlife[playerNumber - 2] = false; // -1 for players start counting at 1, and -1 for Monster being number 1
+            gameManager.playersAlife[playerNumber - 1] = false; // -1 for players start counting at 1
         }
         
         GetComponent<SpriteRenderer>().color = Color.grey;

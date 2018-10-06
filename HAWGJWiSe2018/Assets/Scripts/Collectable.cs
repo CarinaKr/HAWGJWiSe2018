@@ -62,7 +62,7 @@ public class Collectable : MonoBehaviour {
             int randColor = 0;
             do
             {
-                randColor = Random.Range(0, pA.Length-1);
+                randColor = Random.Range(0, pA.Length);
             } while (!pA[randColor]);
             mainColor = (Enums.Colors)randColor;
         }

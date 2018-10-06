@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        _playersAlife = new bool[4]{ true,true,true,true};
+        _playersAlife = new bool[]{ true,true,true};
 	}
 	
 	// Update is called once per frame
@@ -63,6 +63,16 @@ public class GameManager : MonoBehaviour {
         set
         {
             _playersAlife = value;
+            int counter=0;
+            for(int i=0;i<_playersAlife.Length;i++)
+            {
+                if (!_playersAlife[i])
+                    counter++;
+            }
+            if(counter==_playersAlife.Length)
+            {
+                //TODO Monster wins
+            }
         }
     }
 }
