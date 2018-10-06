@@ -20,13 +20,13 @@ public class MonsterManager : PlayerManager {
     public override void Die()
     {
         gameManager.monsterAlife = false;
-        _isAlive = false;
+        isAlive = false;
         GetComponent<SpriteRenderer>().color = Color.grey;
     }
     public override void Revive()
     {
         gameManager.monsterAlife = true;
-        _isAlive = true;
+        isAlive = true;
         GetComponent<SpriteRenderer>().color = clr;
     }
 }

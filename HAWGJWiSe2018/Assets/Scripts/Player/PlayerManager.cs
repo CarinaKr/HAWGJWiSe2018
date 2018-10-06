@@ -8,13 +8,15 @@ public class PlayerManager : MonoBehaviour {
     public Color clr;
     public Enums.Colors mainColor;
     public int playerNumber;
+    public float maxFireTime;
 
     //private Animator animator;
-    protected bool _isAlive;
+    public bool isAlive {  get; protected set; }
     private Plane[] planes;
     private Collider2D objCollider;
     private int _numCollected;
     protected GameManager gameManager;
+    private bool touchesFire;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +28,7 @@ public class PlayerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!_isAlive)
+        if (!isAlive)
             return;
 
         Vector2 relPosition = mainCamera.WorldToViewportPoint(transform.position);
@@ -52,18 +54,32 @@ public class PlayerManager : MonoBehaviour {
             other.gameObject.SetActive(false);
         }
     }
-    
 
-    public int numberCollected
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        get
+        if(collision.transform.tag=="Platform" && collision.gameObject.GetComponent<Platform>().fireActive && !touchesFire)
         {
-            return _numCollected;
+            StartCoroutine("SurviveFire");
         }
-        set
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.tag == "Platform" && collision.gameObject.GetComponent<Platform>().fireActive && touchesFire)
         {
-            _numCollected = value;
+            StopCoroutine("SurviveFire");
         }
+    }
+
+    public IEnumerator SurviveFire()
+    {
+        touchesFire = true;
+        float timer = 0;
+        while (timer < maxFireTime)
+        {
+            yield return new WaitForSeconds(0.01f);
+            timer += 0.01f;
+        }
+        Die();
     }
 
     public virtual void OutOfFrame()
@@ -80,13 +96,26 @@ public class PlayerManager : MonoBehaviour {
     public virtual void Die()
     {
         gameManager.playersAlife[playerNumber - 1] = false; // -1 for players start counting at 1
-        _isAlive = false;
+        isAlive = false;
         GetComponent<SpriteRenderer>().color = Color.grey;
     }
     public virtual void Revive()
     {
         gameManager.playersAlife[playerNumber - 1] = true; // -1 for players start counting at 1
-        _isAlive = true;
+        isAlive = true;
         GetComponent<SpriteRenderer>().color = clr;
     }
+
+    public int numberCollected
+    {
+        get
+        {
+            return _numCollected;
+        }
+        set
+        {
+            _numCollected = value;
+        }
+    }
+
 }
