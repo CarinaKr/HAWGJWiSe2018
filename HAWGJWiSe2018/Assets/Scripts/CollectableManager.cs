@@ -32,6 +32,9 @@ public class CollectableManager : MonoBehaviour {
                     return;
                 }
             }
+            Collectable[] children = GetComponentsInChildren<Collectable>(true);
+            children[Random.Range(0, children.Length)].Respawn();
+            counter = 0;
             Debug.Log("all collectable visible");
         }
 	}

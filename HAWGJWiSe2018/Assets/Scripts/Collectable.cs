@@ -7,10 +7,12 @@ public class Collectable : MonoBehaviour {
     public Enums.Colors mainColor;
     public Camera mainCamera;
     public bool inFrame;
+    [Tooltip("order as enum: blue, green, yellow")]
+    public Sprite[] sprites;
+
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -24,6 +26,7 @@ public class Collectable : MonoBehaviour {
         {
             inFrame = true;
         }
+        
     }
 
     public void Respawn()
@@ -48,8 +51,6 @@ public class Collectable : MonoBehaviour {
         float yPosition = 2.733f + Random.Range(yMinMultiply,yMaxMultiply )*3.46f;
 
         transform.position = new Vector2(xPosition, yPosition);
-        
-        Debug.Log(transform.position);
 
     }
 
@@ -71,7 +72,7 @@ public class Collectable : MonoBehaviour {
             mainColor = (Enums.Colors)Random.Range(0, Enums.Colors.GetNames(typeof(Enums.Colors)).Length);
         }
 
-        //TODO set sprites
+        GetComponent<SpriteRenderer>().sprite = sprites[(int)mainColor];
     }
 }
 
