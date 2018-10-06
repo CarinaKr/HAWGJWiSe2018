@@ -1460,7 +1460,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1306041503}
   clr: {r: 1, g: 1, b: 1, a: 1}
   mainColor: 1
-  playerNumber: 2
+  playerNumber: 1
   maxFireTime: 5
 --- !u!114 &263598549
 MonoBehaviour:
@@ -1474,7 +1474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpHeight: 5
+  jumpHeight: 10
   maxGroundDistance: 0.8
   playerManager: {fileID: 263598548}
 --- !u!50 &263598550
@@ -8851,7 +8851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpHeight: 5
+  jumpHeight: 10
   maxGroundDistance: 0.8
   playerManager: {fileID: 1519957471}
 --- !u!50 &1519957473
@@ -10754,7 +10754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpHeight: 5
+  jumpHeight: 10
   maxGroundDistance: 0.8
   playerManager: {fileID: 1854583073}
 --- !u!114 &1854583073
@@ -10771,7 +10771,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1306041503}
   clr: {r: 1, g: 1, b: 1, a: 1}
   mainColor: 0
-  playerNumber: 1
+  playerNumber: 3
   maxFireTime: 5
 --- !u!95 &1854583074
 Animator:
