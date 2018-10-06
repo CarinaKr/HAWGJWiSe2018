@@ -50,3 +50,6 @@ TagManager:
   - name: Fence
     uniqueID: 1901877903
     locked: 0
+  - name: HUD
+    uniqueID: 2621456711
+    locked: 0
