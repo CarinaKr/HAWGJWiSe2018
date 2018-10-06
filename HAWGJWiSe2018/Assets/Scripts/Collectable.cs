@@ -55,6 +55,7 @@ public class Collectable : MonoBehaviour {
 
     public void FindColor()
     {
+
         if (!GameManager.self.randomColors)
         {
             bool[] pA = GameManager.self.playersAlife;
