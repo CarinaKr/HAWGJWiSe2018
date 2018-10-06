@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -9,8 +10,10 @@ public class PlayerManager : MonoBehaviour {
     public Enums.Colors mainColor;
     public int playerNumber;
     public float maxFireTime;
+    public Text hudCounter;
+    public Image hudPortrait;
 
-    public int numCollected { get; set; }
+    //public int numCollected { get; set; }
     public bool isAlive {  get; protected set; }
 
     private Plane[] planes;
@@ -18,6 +21,7 @@ public class PlayerManager : MonoBehaviour {
     
     protected GameManager gameManager;
     private bool touchesFire;
+    protected int _numberCollected;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +31,7 @@ public class PlayerManager : MonoBehaviour {
         gameManager = GameManager.self;
         touchesFire = false;
         isAlive = true;
-        numberCollected = 10;
+        numberCollected = 5;
     }
 	
 	// Update is called once per frame
@@ -106,23 +110,26 @@ public class PlayerManager : MonoBehaviour {
         isAlive = false;
         GetComponent<SpriteRenderer>().color = Color.grey;
         GetComponent<Animator>().SetBool("isWalking", false);
+        hudPortrait.enabled = true;
     }
     public virtual void Revive()
     {
         gameManager.playersAlife[playerNumber - 1] = true; // -1 for players start counting at 1
         isAlive = true;
         GetComponent<SpriteRenderer>().color = clr;
+        hudPortrait.enabled = false;
     }
 
-    public int numberCollected
+    public virtual int numberCollected
     {
         get
         {
-            return numCollected;
+            return _numberCollected;
         }
         set
         {
-            numCollected = value;
+            _numberCollected = value;
+            hudCounter.text = ""+_numberCollected;
         }
     }
 

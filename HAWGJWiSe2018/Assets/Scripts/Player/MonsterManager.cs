@@ -29,4 +29,16 @@ public class MonsterManager : PlayerManager {
         isAlive = true;
         GetComponent<SpriteRenderer>().color = clr;
     }
+
+    public override int numberCollected
+    {
+        get
+        {
+            return _numberCollected;
+        }
+        set
+        {
+            _numberCollected = value;
+        }
+    }
 }

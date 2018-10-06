@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDead : MonoBehaviour {
 
     public float maxCooldown;
+    public Image kolben;
 
-    private GameManager gameManager;
+    //private GameManager gameManager;
     private PlayerManager playerManager;
     private int playerNumber;
     private int actionsUsedNum;
@@ -14,18 +16,24 @@ public class PlayerDead : MonoBehaviour {
 
     private void Start()
     {
-        gameManager = GameManager.self;
+        //gameManager = GameManager.self;
         playerManager=GetComponent<PlayerManager>();
         playerNumber = playerManager.playerNumber;
     }
 
     // Update is called once per frame
     void Update () {
-        if (playerManager.isAlive || playerManager.numberCollected<=0 || cooldownTimer>0)
-            return;
-        
 
-        if(Input.GetButtonDown("Fire"+playerNumber))
+        
+        if (playerManager.isAlive) 
+            return;
+        UpdateTimer();
+
+        if (playerManager.numberCollected <= 0 || cooldownTimer > 0)
+            return;
+
+
+            if (Input.GetButtonDown("Fire"+playerNumber))
         {
             TriggerAction(Enums.PlatformType.FEUER);
         }
@@ -38,7 +46,8 @@ public class PlayerDead : MonoBehaviour {
             TriggerAction(Enums.PlatformType.STURM);
         }
 
-        cooldownTimer -= Time.deltaTime;
+       
+        
 	}
 
     private void TriggerAction(Enums.PlatformType type)
@@ -50,7 +59,13 @@ public class PlayerDead : MonoBehaviour {
                 platform.TriggerAction();
             }
         }
-        gameManager.numberCollected--;
+        playerManager.numberCollected--;
         cooldownTimer = maxCooldown;
+    }
+
+    private void UpdateTimer()
+    {
+        cooldownTimer -= Time.deltaTime;
+        kolben.fillAmount = (((maxCooldown-cooldownTimer) / maxCooldown) * 0.63f);
     }
 }
