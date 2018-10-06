@@ -9,6 +9,8 @@ public class Enums  {
         RED,
         GREEN,
         BLUE,
+        YELLOW,
+        PURPLE,
         MONSTER
     }
 }

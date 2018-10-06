@@ -8,16 +8,19 @@ public class PlayerManager : MonoBehaviour {
     public Color clr;
     public Enums.Colors mainColor;
     public int playerNumber;
+    public bool isMonster;
 
     private bool _isAlive;
     private Plane[] planes;
     private Collider2D objCollider;
     private int _numCollected;
+    private GameManager gameManager;
 
 	// Use this for initialization
 	void Start () {
         planes = GeometryUtility.CalculateFrustumPlanes(mainCamera);
         objCollider = GetComponent<Collider2D>();
+        gameManager = GameManager.self;
     }
 	
 	// Update is called once per frame
@@ -35,10 +38,13 @@ public class PlayerManager : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag=="Collectable" && other.gameObject.GetComponent<Collectable>().mainColor==mainColor)
+        if(other.tag=="Collectable")
         {
+            if (!GameManager.self.randomColors && other.gameObject.GetComponent<Collectable>().mainColor != mainColor)
+                return;
+
             numberCollected++;
-            GameManager.self.numberCollected++;
+            gameManager.numberCollected++;
             other.gameObject.SetActive(false);
         }
     }
@@ -63,7 +69,15 @@ public class PlayerManager : MonoBehaviour {
     public void OutOfFrame()
     {
         _isAlive = false;
-        GameManager.self.playersAlife[playerNumber] = false;
+        if(isMonster)
+        {
+            gameManager.monsterAlife = false;
+        }
+        else
+        {
+            gameManager.playersAlife[playerNumber - 2] = false; // -1 for players start counting at 1, and -1 for Monster being number 1
+        }
+        
         GetComponent<SpriteRenderer>().color = Color.grey;
 
         //TODO: Trigger Feuer-Wasser-Sturm
@@ -71,7 +85,14 @@ public class PlayerManager : MonoBehaviour {
     public void InFrame()
     {
         _isAlive = true;
-        GameManager.self.playersAlife[playerNumber] = true;
+        if (isMonster)
+        {
+            gameManager.monsterAlife = true;
+        }
+        else
+        {
+            gameManager.playersAlife[playerNumber - 2] = true; // -1 for players start counting at 1, and -1 for Monster being number 1
+        }
         GetComponent<SpriteRenderer>().color = clr;
     }
 }

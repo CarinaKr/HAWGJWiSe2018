@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public float speed;
-    public float jumpHeigt;
+    public float jumpHeight;
     public float maxGroundDistance;
     public PlayerManager playerManager;
 
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if(Input.GetButtonDown("Jump"+playerNumber)&&jumpCount<maxJumpCount)
         {
-            Jump(jumpHeigt);
+            Jump(jumpHeight);
             jumpCount++;
         }
     }

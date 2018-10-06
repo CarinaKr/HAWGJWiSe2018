@@ -69,6 +69,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainColor: 2
+  mainCamera: {fileID: 20317906703735328, guid: 8a93fbc45af953f4e944a77da11083bc,
+    type: 2}
+  inFrame: 0
 --- !u!212 &212514817379012858
 SpriteRenderer:
   m_ObjectHideFlags: 1
