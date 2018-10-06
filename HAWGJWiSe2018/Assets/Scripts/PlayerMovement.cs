@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     public float maxGroundDistance;
     public PlayerManager playerManager;
 
+    private Animator animator;
     private Rigidbody2D rb;
     private Vector2 movement;
     private int jumpCount;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         jumpCount = 0;
         playerNumber = playerManager.playerNumber;
@@ -46,6 +48,14 @@ public class PlayerMovement : MonoBehaviour {
     public void Move(float inputX)
     {
         rb.velocity = new Vector2(inputX, rb.velocity.y);
+        if(rb.velocity.magnitude!=0 && isGrounded)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
     }
     
     public void Jump(float heigt)

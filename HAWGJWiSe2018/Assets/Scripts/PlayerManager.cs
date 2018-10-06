@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour {
     public Enums.Colors mainColor;
     public int playerNumber;
 
+    //private Animator animator;
     protected bool _isAlive;
     private Plane[] planes;
     private Collider2D objCollider;
@@ -17,6 +18,7 @@ public class PlayerManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //animator = GetComponent<Animator>();
         planes = GeometryUtility.CalculateFrustumPlanes(mainCamera);
         objCollider = GetComponent<Collider2D>();
         gameManager = GameManager.self;
