@@ -24,6 +24,9 @@ public class PlayerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!_isAlive)
+            return;
+
         Vector2 relPosition = mainCamera.WorldToViewportPoint(transform.position);
         if (!(relPosition.x>=0 && relPosition.x<=1 && relPosition.y>=0 && relPosition.y<=1))
         {
