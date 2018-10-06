@@ -11,4 +11,12 @@ public class Enums  {
         YELLOW,
         MONSTER
     }
+
+    public enum PlatformType
+    {
+        DEFAULT,
+        FEUER,
+        WASSER,
+        STURM
+    }
 }
