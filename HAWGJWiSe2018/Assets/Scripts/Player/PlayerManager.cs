@@ -10,11 +10,12 @@ public class PlayerManager : MonoBehaviour {
     public int playerNumber;
     public float maxFireTime;
 
-    //private Animator animator;
+    public int numCollected { get; set; }
     public bool isAlive {  get; protected set; }
+
     private Plane[] planes;
     private Collider2D objCollider;
-    private int _numCollected;
+    
     protected GameManager gameManager;
     private bool touchesFire;
 
@@ -24,6 +25,9 @@ public class PlayerManager : MonoBehaviour {
         planes = GeometryUtility.CalculateFrustumPlanes(mainCamera);
         objCollider = GetComponent<Collider2D>();
         gameManager = GameManager.self;
+        touchesFire = false;
+        isAlive = true;
+        numberCollected = 10;
     }
 	
 	// Update is called once per frame
@@ -62,7 +66,7 @@ public class PlayerManager : MonoBehaviour {
             StartCoroutine("SurviveFire");
         }
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.transform.tag == "Platform" && collision.gameObject.GetComponent<Platform>().fireActive && touchesFire)
         {
@@ -72,13 +76,16 @@ public class PlayerManager : MonoBehaviour {
 
     public IEnumerator SurviveFire()
     {
+        float startTime = Time.realtimeSinceStartup;
         touchesFire = true;
         float timer = 0;
         while (timer < maxFireTime)
         {
-            yield return new WaitForSeconds(0.01f);
-            timer += 0.01f;
+            yield return new WaitForSeconds(0.5f);
+            timer += 0.5f;
         }
+        float deltaTime = Time.realtimeSinceStartup - startTime;
+        Debug.Log("deltaTime: " + deltaTime);
         Die();
     }
 
@@ -98,6 +105,7 @@ public class PlayerManager : MonoBehaviour {
         gameManager.playersAlife[playerNumber - 1] = false; // -1 for players start counting at 1
         isAlive = false;
         GetComponent<SpriteRenderer>().color = Color.grey;
+        GetComponent<Animator>().SetBool("isWalking", false);
     }
     public virtual void Revive()
     {
@@ -110,11 +118,11 @@ public class PlayerManager : MonoBehaviour {
     {
         get
         {
-            return _numCollected;
+            return numCollected;
         }
         set
         {
-            _numCollected = value;
+            numCollected = value;
         }
     }
 

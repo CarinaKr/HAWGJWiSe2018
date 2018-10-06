@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
+        if (!playerManager.isAlive)
+            return;
+
         if(isGrounded)
         {
             jumpCount = 0;
@@ -40,6 +43,9 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void FixedUpdate () {
+        if (!playerManager.isAlive)
+            return;
+
         Move(Input.GetAxis("Horizontal"+playerNumber)*speed);
 	}
 

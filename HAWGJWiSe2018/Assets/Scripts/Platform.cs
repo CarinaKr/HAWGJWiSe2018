@@ -8,6 +8,7 @@ public class Platform : MonoBehaviour {
     public float riseSpeed;
     public float riseDistance;
     public float waterTime;
+    public float fireTimer;
 
     private float startHeight;
     public bool fireActive {  get; private set; }
@@ -17,7 +18,7 @@ public class Platform : MonoBehaviour {
         switch(platformtype)
         {
             case Enums.PlatformType.FEUER:
-
+                StartCoroutine("StartFire");
                 return;
             case Enums.PlatformType.STURM:
                 StartCoroutine("RisePlatform");
@@ -37,7 +38,12 @@ public class Platform : MonoBehaviour {
             transform.Translate(Vector2.up * riseSpeed);
             yield return new WaitForSeconds(0.01f);
         }
-        
+        while (transform.position.y >startHeight)
+        {
+            transform.Translate(Vector2.down * riseSpeed);
+            yield return new WaitForSeconds(0.01f);
+        }
+        transform.position = new Vector2(transform.position.x,startHeight);
     }
 
     public IEnumerator WaterPlatform()
@@ -51,5 +57,17 @@ public class Platform : MonoBehaviour {
             timer += 0.01f;
         }
         collider.enabled = true;
+    }
+
+    public IEnumerator StartFire()
+    {
+        fireActive = true;
+        float timer = 0;
+        while (timer < fireTimer)
+        {
+            yield return new WaitForSeconds(0.5f);
+            timer += 0.5f;
+        }
+        fireActive = false;
     }
 }
