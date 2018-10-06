@@ -887,18 +887,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4058582352278994, guid: e57a55ed3394d0242865431f5c86ea9c, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1517154924288100, guid: e57a55ed3394d0242865431f5c86ea9c, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4058582352278994, guid: e57a55ed3394d0242865431f5c86ea9c, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1517154924288100, guid: e57a55ed3394d0242865431f5c86ea9c, type: 2}
       propertyPath: m_Name
       value: Platform (1)
@@ -1689,6 +1677,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 748166183}
   hudPortrait: {fileID: 1742989504}
+  playerMoveNumber: 0
 --- !u!114 &263598549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2697,6 +2686,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 0}
   hudPortrait: {fileID: 0}
+  playerMoveNumber: 0
 --- !u!1001 &371062855
 Prefab:
   m_ObjectHideFlags: 0
@@ -3012,7 +3002,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c8b6f2b7a1cc03242909cd12bcd6738a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b03a306db77db904e9ab34f332b12b26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4859,7 +4849,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c8b6f2b7a1cc03242909cd12bcd6738a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b03a306db77db904e9ab34f332b12b26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5497,7 +5487,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c8b6f2b7a1cc03242909cd12bcd6738a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b03a306db77db904e9ab34f332b12b26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6636,12 +6626,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c8b6f2b7a1cc03242909cd12bcd6738a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b03a306db77db904e9ab34f332b12b26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 1, y: 52}
+  m_Size: {x: 1, y: 54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6664,7 +6654,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 2}
-    newSize: {x: 1, y: 52}
+    newSize: {x: 1, y: 54}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
@@ -6815,7 +6805,7 @@ SpriteRenderer:
   m_Size: {x: 3.9166667, y: 0.56666666}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &966618550
@@ -9614,6 +9604,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 186855661}
   hudPortrait: {fileID: 1234721036}
+  playerMoveNumber: 0
 --- !u!114 &1519957472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12102,6 +12093,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 1627005434}
   hudPortrait: {fileID: 617266446}
+  playerMoveNumber: 0
 --- !u!95 &1854583074
 Animator:
   serializedVersion: 3
