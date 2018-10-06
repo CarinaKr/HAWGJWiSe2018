@@ -19,4 +19,13 @@ public class Enums  {
         WASSER,
         STURM
     }
+
+    public enum Scene
+    {
+        TITLE_SCREEN,
+        MENU,
+        GAMEPLAY,
+        WIN_MONSTER,
+        WIN_PLAYERS
+    }
 }

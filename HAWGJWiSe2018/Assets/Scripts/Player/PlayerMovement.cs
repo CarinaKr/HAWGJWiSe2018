@@ -15,14 +15,15 @@ public class PlayerMovement : MonoBehaviour {
     private int jumpCount;
     private int maxJumpCount = 2;
     private bool _isGrounded;
-    private int playerNumber;
+    // private int playerNumber;
+    private int playerMoveNumber;
 
 	// Use this for initialization
 	void Start () {
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         jumpCount = 0;
-        playerNumber = playerManager.playerNumber;
+        playerMoveNumber = playerManager.playerMoveNumber;
 	}
 
     private void Update()
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
             jumpCount = 0;
         }
 
-        if(Input.GetButtonDown("Jump"+playerNumber)&&jumpCount<maxJumpCount)
+        if(Input.GetButtonDown("Jump"+playerMoveNumber)&&jumpCount<maxJumpCount)
         {
             Jump(jumpHeight);
             jumpCount++;
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour {
         if (!playerManager.isAlive)
             return;
 
-        Move(Input.GetAxis("Horizontal"+playerNumber)*speed);
+        Move(Input.GetAxis("Horizontal"+playerMoveNumber)*speed);
 	}
 
     

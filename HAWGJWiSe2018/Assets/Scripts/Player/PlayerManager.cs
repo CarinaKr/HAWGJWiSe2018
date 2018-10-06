@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour {
 
     //public int numCollected { get; set; }
     public bool isAlive {  get; protected set; }
+    public int playerMoveNumber { get; set; }
 
     private Plane[] planes;
     private Collider2D objCollider;

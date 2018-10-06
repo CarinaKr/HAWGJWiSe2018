@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -8,16 +9,23 @@ public class GameManager : MonoBehaviour {
 
     public int maxCollectedItems;
     public bool randomColors;
+    public PlayerManager[] players;
+
+    public bool monsterAlife {  get;  set; }
 
     private int _numCollected;
     private bool[] _playersAlife;
-    public bool monsterAlife {  get;  set; }
+    private Enums.Scene currentScene;
+    private SelectPlayers selectPlayers;
+    private int playerOrder;
+    
 
     private void Awake()
     {
         if(!self)
         {
             self = this;
+            currentScene = Enums.Scene.TITLE_SCREEN;
         }
         else
         {
@@ -30,11 +38,38 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _playersAlife = new bool[]{ true,true,true};
+        players = new PlayerManager[4];
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if(level==(int)Enums.Scene.MENU)
+        {
+            selectPlayers = FindObjectOfType<SelectPlayers>();
+        }
+        else if(level==(int)Enums.Scene.GAMEPLAY)
+        {
+            for(int i=0;i<players.Length;i++)
+            {
+
+                players[i].playerMoveNumber = (playerOrder + 3) % players.Length==0 ? 4: (playerOrder + 3) % players.Length;
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
+		if(Input.anyKeyDown && currentScene==Enums.Scene.TITLE_SCREEN)
+        {
+            currentScene = Enums.Scene.MENU;
+            SceneManager.LoadScene((int)Enums.Scene.MENU);
+        }
+        else if(Input.GetButtonDown("Confirm")&&currentScene==Enums.Scene.MENU)
+        {
+            playerOrder = selectPlayers.playerOrder;
+            currentScene = Enums.Scene.GAMEPLAY;
+            SceneManager.LoadScene((int)Enums.Scene.GAMEPLAY);
+        }
 	}
 
     public int numberCollected
