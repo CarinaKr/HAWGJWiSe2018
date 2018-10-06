@@ -57,12 +57,12 @@ public class PlayerMovement : MonoBehaviour {
         if(rb.velocity.magnitude!=0 && isGrounded)
         {
             animator.SetBool("isWalking", true);
-            Debug.Log("isWalking: true");
+            //Debug.Log("isWalking: true");
         }
         else
         {
             animator.SetBool("isWalking", false);
-            Debug.Log("isWalking: false");
+            //Debug.Log("isWalking: false");
         }
     }
     
@@ -75,10 +75,15 @@ public class PlayerMovement : MonoBehaviour {
     {
         get
         {
-            Debug.DrawRay(transform.position, Vector2.down * maxGroundDistance, Color.green);
-            if (Physics2D.Raycast(transform.position, Vector2.down * maxGroundDistance, maxGroundDistance, LayerMask.GetMask("Platform")))
+            Vector3 offset = Vector3.down * (maxGroundDistance *(3.0f / 4.0f));
+            Vector3 startPosition = transform.position + offset;
+            float distance = maxGroundDistance / 3;
+            Debug.DrawRay(startPosition, Vector2.down * distance, Color.green);
+            if (Physics2D.Raycast(startPosition, Vector2.down * maxGroundDistance, distance, LayerMask.GetMask("Platform")) && Mathf.Abs(rb.velocity.y) <=0.001f)
             {
+                Debug.Log(Mathf.Abs(rb.velocity.y));
                 return true;
+                
             }
             return false;
         }
