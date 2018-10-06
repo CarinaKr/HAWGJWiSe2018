@@ -142,6 +142,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCollectedItems: 0
   randomColors: 0
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &48603207
 Transform:
   m_ObjectHideFlags: 0

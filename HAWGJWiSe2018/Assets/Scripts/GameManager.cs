@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour {
 
     public int maxCollectedItems;
     public bool randomColors;
-    public PlayerManager[] players;
 
     public bool monsterAlife {  get;  set; }
 
+    public PlayerManager[] players;
+    private GameObject[] playerObjects;
     private int _numCollected;
     private bool[] _playersAlife;
     private Enums.Scene currentScene;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour {
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         DontDestroyOnLoad(gameObject);
@@ -38,21 +40,31 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _playersAlife = new bool[]{ true,true,true};
-        players = new PlayerManager[4];
+        //players = new PlayerManager[4];
+        playerObjects = new GameObject[4];
 	}
 
     private void OnLevelWasLoaded(int level)
     {
+        if (self!=this) return;
+
         if(level==(int)Enums.Scene.MENU)
         {
             selectPlayers = FindObjectOfType<SelectPlayers>();
         }
         else if(level==(int)Enums.Scene.GAMEPLAY)
         {
-            for(int i=0;i<players.Length;i++)
+            playerObjects = new GameObject[4];
+            players = new PlayerManager[4];
+            players[0] = GameObject.Find("Player1").GetComponent<PlayerManager>();
+            players[1] = GameObject.Find("Player2").GetComponent<PlayerManager>();
+            players[2] = GameObject.Find("Player3").GetComponent<PlayerManager>();
+            players[3] = GameObject.Find("Monster").GetComponent<PlayerManager>();
+            for (int i=0;i<players.Length;i++)
             {
-
-                players[i].playerMoveNumber = (playerOrder + 3) % players.Length==0 ? 4: (playerOrder + 3) % players.Length;
+                int pMN = ((i + 2) + playerOrder + (playerOrder % 2) * 2)%players.Length;
+                //players[i].playerMoveNumber = (playerOrder + 3) % players.Length==0 ? 4: (playerOrder + 3) % players.Length;
+                players[i].playerMoveNumber = pMN == 0 ? 4 : pMN;
             }
         }
     }
