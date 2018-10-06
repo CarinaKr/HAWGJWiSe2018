@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         jumpCount = 0;
         playerNumber = playerManager.playerNumber;
@@ -57,10 +57,12 @@ public class PlayerMovement : MonoBehaviour {
         if(rb.velocity.magnitude!=0 && isGrounded)
         {
             animator.SetBool("isWalking", true);
+            Debug.Log("isWalking: true");
         }
         else
         {
             animator.SetBool("isWalking", false);
+            Debug.Log("isWalking: false");
         }
     }
     
