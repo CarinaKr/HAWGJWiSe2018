@@ -1681,6 +1681,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 748166183}
   hudPortrait: {fileID: 1742989504}
+  playerMoveNumber: 0
 --- !u!114 &263598549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2689,6 +2690,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 0}
   hudPortrait: {fileID: 0}
+  playerMoveNumber: 0
 --- !u!1001 &371062855
 Prefab:
   m_ObjectHideFlags: 0
@@ -9528,6 +9530,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 186855661}
   hudPortrait: {fileID: 1234721036}
+  playerMoveNumber: 0
 --- !u!114 &1519957472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10588,6 +10591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCollectedItems: 12
   randomColors: 0
+  players: []
 --- !u!4 &1701229035
 Transform:
   m_ObjectHideFlags: 0
@@ -12015,6 +12019,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 1627005434}
   hudPortrait: {fileID: 617266446}
+  playerMoveNumber: 0
 --- !u!95 &1854583074
 Animator:
   serializedVersion: 3

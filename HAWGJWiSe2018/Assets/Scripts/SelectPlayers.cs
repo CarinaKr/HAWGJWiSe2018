@@ -7,6 +7,7 @@ public class SelectPlayers : MonoBehaviour {
 
     public Sprite[] portraits;
     public Image[] spaces;
+    public Image leftArrow, rightArrow;
 
     public int playerOrder { private set; get; }
     private bool needsReset;
