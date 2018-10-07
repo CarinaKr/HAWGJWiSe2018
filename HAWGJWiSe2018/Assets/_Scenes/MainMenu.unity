@@ -583,6 +583,8 @@ MonoBehaviour:
   randomColors: 0
   currentScene: 0
   animationImage: {fileID: 0}
+  fireTime: 0
+  waterTime: 0
   players: []
 --- !u!4 &682513310
 Transform:
@@ -1561,7 +1563,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

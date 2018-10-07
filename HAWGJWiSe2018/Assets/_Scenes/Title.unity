@@ -144,6 +144,8 @@ MonoBehaviour:
   randomColors: 0
   currentScene: 0
   animationImage: {fileID: 1777641018}
+  fireTime: 0
+  waterTime: 0
   players:
   - {fileID: 0}
   - {fileID: 0}
@@ -534,7 +536,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
