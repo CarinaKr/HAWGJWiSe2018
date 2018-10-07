@@ -10416,7 +10416,11 @@ MonoBehaviour:
   randomColors: 0
   currentScene: 2
   animationImage: {fileID: 0}
-  players: []
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1701229035
 Transform:
   m_ObjectHideFlags: 0

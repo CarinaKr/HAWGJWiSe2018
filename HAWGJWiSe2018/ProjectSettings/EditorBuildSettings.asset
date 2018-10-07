@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/_Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/_Scenes/Bettina.unity
+    path: Assets/_Scenes/Title.unity
     guid: 3c9a2825ed83f7b4bab0150d22e01a82
   - enabled: 1
     path: Assets/_Scenes/MainMenu.unity
     guid: acd9f67eea8269a40ada52cf4f723546
   - enabled: 1
-    path: Assets/_Scenes/Carina2.unity
+    path: Assets/_Scenes/GamePlay.unity
     guid: 54163c287e1bf254386c6d9191a05a79
   - enabled: 1
     path: Assets/_Scenes/VictoryScreenMonster.unity
