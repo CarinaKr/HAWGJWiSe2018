@@ -33,7 +33,7 @@ public class PlayerDead : MonoBehaviour {
             return;
 
 
-            if (Input.GetButtonDown("Fire"+playerNumber))
+        if (Input.GetButtonDown("Fire"+playerNumber))
         {
             TriggerAction(Enums.PlatformType.FEUER);
         }

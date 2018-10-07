@@ -7,6 +7,7 @@ public class Glasur : MonoBehaviour {
     public Enums.PlatformType platformtypes;
     [Tooltip("order: Feuer, Wasser, Sturm")]
     public Sprite[] glasuren;
+    public Sprite[] effects;
 
     private SpriteRenderer renderer;
 

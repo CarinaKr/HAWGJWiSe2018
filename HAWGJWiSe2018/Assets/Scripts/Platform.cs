@@ -9,6 +9,8 @@ public class Platform : MonoBehaviour {
     public float riseDistance;
     public float waterTime;
     public float fireTimer;
+    public GameObject storm, water, fire;
+    public GameObject glazeOverlay;
 
     private float startHeight;
     public bool fireActive {  get; private set; }
@@ -31,6 +33,7 @@ public class Platform : MonoBehaviour {
 
     public IEnumerator RisePlatform()
     {
+        storm.SetActive(true);
         startHeight = transform.position.y;
         float endHeigt = startHeight + riseDistance;
         while(transform.position.y<endHeigt)
@@ -44,10 +47,13 @@ public class Platform : MonoBehaviour {
             yield return new WaitForSeconds(0.01f);
         }
         transform.position = new Vector2(transform.position.x,startHeight);
+        storm.SetActive(false);
     }
 
     public IEnumerator WaterPlatform()
     {
+        water.SetActive(true);
+        fire.SetActive(true);
         BoxCollider2D collider= GetComponent<BoxCollider2D>();
         collider.enabled = false;
         float timer = 0;
@@ -57,10 +63,12 @@ public class Platform : MonoBehaviour {
             timer += 0.01f;
         }
         collider.enabled = true;
+        water.SetActive(true);
     }
 
     public IEnumerator StartFire()
     {
+        fire.SetActive(true);
         fireActive = true;
         float timer = 0;
         while (timer < fireTimer)
@@ -69,5 +77,6 @@ public class Platform : MonoBehaviour {
             timer += 0.5f;
         }
         fireActive = false;
+        fire.SetActive(false);
     }
 }
