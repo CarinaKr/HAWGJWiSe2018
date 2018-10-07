@@ -11,6 +11,7 @@ public class Platform : MonoBehaviour {
     public float fireTimer;
     public GameObject storm, water, fire;
     public GameObject glazeOverlay;
+    public GameObject fence;
 
     private float startHeight;
     public bool fireActive {  get; private set; }
@@ -34,6 +35,7 @@ public class Platform : MonoBehaviour {
     public IEnumerator RisePlatform()
     {
         storm.SetActive(true);
+        glazeOverlay.SetActive(false);
         startHeight = transform.position.y;
         float endHeigt = startHeight + riseDistance;
         while(transform.position.y<endHeigt)
@@ -48,22 +50,29 @@ public class Platform : MonoBehaviour {
         }
         transform.position = new Vector2(transform.position.x,startHeight);
         storm.SetActive(false);
+        glazeOverlay.SetActive(true);
     }
 
     public IEnumerator WaterPlatform()
     {
+        SpriteRenderer rendere = GetComponent<SpriteRenderer>();
         water.SetActive(true);
-        fire.SetActive(true);
+        glazeOverlay.SetActive(false);
+        fence.SetActive(false);
+        rendere.enabled = false;
         BoxCollider2D collider= GetComponent<BoxCollider2D>();
         collider.enabled = false;
         float timer = 0;
         while (timer<waterTime)
         {
-            yield return new WaitForSeconds(0.01f);
-            timer += 0.01f;
+            yield return new WaitForSeconds(0.5f);
+            timer += 0.5f;
         }
         collider.enabled = true;
-        water.SetActive(true);
+        water.SetActive(false);
+        glazeOverlay.SetActive(true);
+        rendere.enabled = true;
+        fence.SetActive(true);
     }
 
     public IEnumerator StartFire()
@@ -73,8 +82,8 @@ public class Platform : MonoBehaviour {
         float timer = 0;
         while (timer < fireTimer)
         {
-            yield return new WaitForSeconds(0.5f);
-            timer += 0.5f;
+            yield return new WaitForSeconds(1f);
+            timer += 1f;
         }
         fireActive = false;
         fire.SetActive(false);
