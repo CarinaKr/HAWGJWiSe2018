@@ -29,7 +29,13 @@ public class PlayerDead : MonoBehaviour {
             return;
         UpdateTimer();
 
-        if (playerManager.numberCollected <= 0 || cooldownTimer > 0)
+        if (playerManager.numberCollected <= 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        if ( cooldownTimer > 0)
             return;
 
 

@@ -110,7 +110,20 @@ public class PlayerManager : MonoBehaviour {
 
     public virtual void Die()
     {
-        gameManager.playersAlife[playerNumber - 1] = false; // -1 for players start counting at 1
+        bool[] pLife = new bool[3];
+        for(int i=0;i<pLife.Length;i++)
+        {
+            if(i==playerNumber-1)
+            {
+                pLife[i] = false;
+            }
+            else
+            {
+                pLife[i] = gameManager.playersAlife[i];
+            }
+        }
+        gameManager.playersAlife = pLife;
+        //gameManager.playersAlife[playerNumber - 1] = false; // -1 for players start counting at 1
         isAlive = false;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<Rigidbody2D>().gravityScale = 0.0f;
@@ -124,7 +137,8 @@ public class PlayerManager : MonoBehaviour {
     private IEnumerator waitForDeath()
     {
         yield return new WaitForSeconds(0.3f);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        GetComponent<SpriteRenderer>().enabled = false; //still needs to be active for Feuer-Wasser-Sturm
     }
 
     public virtual void Revive()
