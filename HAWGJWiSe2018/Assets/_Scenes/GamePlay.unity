@@ -1345,9 +1345,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 74ee44a332de18b438e9e202c1f35893, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7b3a9c6e6af2e3e41b0f1f43975fe5bd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6114,7 +6114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  jumpHeight: 8
+  jumpHeight: 10
   maxGroundDistance: 1.6
   playerManager: {fileID: 861217170}
 --- !u!50 &861217173
