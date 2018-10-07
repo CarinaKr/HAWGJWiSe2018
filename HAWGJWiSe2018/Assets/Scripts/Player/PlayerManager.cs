@@ -35,8 +35,6 @@ public class PlayerManager : MonoBehaviour {
         touchesFire = false;
         isAlive = true;
         isEating = false;
-        //numberCollected = 3;
-        //gameManager.numberCollected += 3;
     }
 	
 	// Update is called once per frame
