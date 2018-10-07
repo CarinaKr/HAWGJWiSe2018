@@ -60,11 +60,13 @@ public class Collectable : MonoBehaviour {
         if (!GameManager.self.randomColors)
         {
             bool[] pA = GameManager.self.playersAlife;
+            int fallbackCounter = 100;
             int randColor = 0;
             do
             {
                 randColor = Random.Range(0, pA.Length);
-            } while (!pA[randColor]);
+                fallbackCounter--;
+            } while (!pA[randColor] && fallbackCounter>0);
             mainColor = (Enums.Colors)randColor;
         }
         else

@@ -41,10 +41,18 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        _playersAlife = new bool[]{ true,true,true};
+        Init();
+	}
+
+    private void Init()
+    {
+        _playersAlife = new bool[] { true, true, true };
         //players = new PlayerManager[4];
         playerObjects = new GameObject[4];
-	}
+        animationImage = GameObject.Find("AnimationImage").GetComponent<Animator>();
+        playerOrder = 0;
+        _numCollected = 0;
+    }
 
     private void OnLevelWasLoaded(int level)
     {
@@ -52,7 +60,7 @@ public class GameManager : MonoBehaviour {
 
         if(level==(int)Enums.Scene.TITLE_SCREEN)
         {
-            animationImage = GameObject.Find("AnimationImage").GetComponent<Animator>();
+            Init();
         }
         else if(level==(int)Enums.Scene.MENU)
         {
