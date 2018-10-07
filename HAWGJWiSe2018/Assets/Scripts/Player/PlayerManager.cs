@@ -112,12 +112,21 @@ public class PlayerManager : MonoBehaviour {
     {
         gameManager.playersAlife[playerNumber - 1] = false; // -1 for players start counting at 1
         isAlive = false;
-        Destroy(GetComponent("BoxCollider2D"));
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         GetComponent<SpriteRenderer>().color = Color.grey;
         GetComponent<Animator>().SetBool("isWalking", false);
-        gameObject.SetActive(false);
+        StartCoroutine("waitForDeath");
         hudPortrait.enabled = true;
     }
+
+    private IEnumerator waitForDeath()
+    {
+        yield return new WaitForSeconds(0.3f);
+        gameObject.SetActive(false);
+    }
+
     public virtual void Revive()
     {
         gameManager.playersAlife[playerNumber - 1] = true; // -1 for players start counting at 1

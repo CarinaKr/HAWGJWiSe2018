@@ -9,8 +9,7 @@ public class MonsterManager : PlayerManager {
         
         if (collision.transform.tag == "Player")
         {
-            Debug.Log("starts Eating");
-            if(collision.transform.position.x < transform.position.x)
+            if(collision.transform.position.x > transform.position.x)
             {
                 gameObject.transform.eulerAngles = new Vector3(
                                 gameObject.transform.eulerAngles.x,
@@ -27,9 +26,15 @@ public class MonsterManager : PlayerManager {
     {
         isEating = true;
         animator.SetTrigger("startsEating");
-        print(Time.time);
-        yield return new WaitForSeconds(2);
-        print(Time.time);
+        yield return new WaitForSeconds(1);
+        if (transform.rotation.eulerAngles.y == 180)
+        {
+            gameObject.transform.eulerAngles = new Vector3(
+                            gameObject.transform.eulerAngles.x,
+                            gameObject.transform.eulerAngles.y - 180,
+                            gameObject.transform.eulerAngles.z);
+
+        }
         isEating = false;
     }
 
