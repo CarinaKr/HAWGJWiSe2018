@@ -937,12 +937,12 @@ Prefab:
     - target: {fileID: 61020794407601322, guid: 3bdbe802a3487044a9e71b13b78f7e1d,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.0001
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61562830742869012, guid: 3bdbe802a3487044a9e71b13b78f7e1d,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.0001
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61020794407601322, guid: 3bdbe802a3487044a9e71b13b78f7e1d,
         type: 2}
