@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public bool randomColors;
     public Enums.Scene currentScene;
     public Animator animationImage;
+    public float fireTime, waterTime;
 
     private bool _monsterAlife;
 
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour {
         set
         {
             _numCollected = value;
-            if(_numCollected<=maxCollectedItems)
+            if(_numCollected>=maxCollectedItems)
             {
                 //TODO: players win
                 Debug.Log("players win");

@@ -7,6 +7,7 @@ public class PlayerDead : MonoBehaviour {
 
     public float maxCooldown;
     public Image kolben;
+    public Audio audio;
 
     //private GameManager gameManager;
     private PlayerManager playerManager;
@@ -67,11 +68,30 @@ public class PlayerDead : MonoBehaviour {
         }
         playerManager.numberCollected--;
         cooldownTimer = maxCooldown;
+        StartCoroutine("PlaySound",type);
+        
     }
 
     private void UpdateTimer()
     {
         cooldownTimer -= Time.deltaTime;
         kolben.fillAmount = (((maxCooldown-cooldownTimer) / maxCooldown) * 0.63f);
+    }
+
+    public IEnumerator PlaySound(Enums.PlatformType type)
+    {
+        audio.PlayElement(type);
+        float waitTime = 0.2f;
+        switch(type)
+        {
+            case Enums.PlatformType.FEUER:
+                waitTime = GameManager.self.fireTime;
+                break;
+            case Enums.PlatformType.WASSER:
+                waitTime = GameManager.self.waterTime;
+                break;
+        }
+        yield return new WaitForSeconds(waitTime);
+        audio.Stop();
     }
 }

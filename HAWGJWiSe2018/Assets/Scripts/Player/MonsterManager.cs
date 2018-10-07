@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MonsterManager : PlayerManager {
 
+    public AudioSource audio;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
@@ -24,6 +26,7 @@ public class MonsterManager : PlayerManager {
 
     public IEnumerator Eat()
     {
+        audio.Play();
         isEating = true;
         animator.SetTrigger("startsEating");
         yield return new WaitForSeconds(1);

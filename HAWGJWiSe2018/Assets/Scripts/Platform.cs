@@ -7,18 +7,27 @@ public class Platform : MonoBehaviour {
     public Enums.PlatformType platformtype;
     public float riseSpeed;
     public float riseDistance;
-    public float waterTime;
-    public float fireTimer;
+    
     public GameObject storm, water, fire;
     public GameObject glazeOverlay;
     public GameObject fence;
+    public Audio audio;
 
     private float startHeight;
+    private float waterTime;
+    private float fireTime;
     public bool fireActive {  get; private set; }
+
+    private void Start()
+    {
+        waterTime = GameManager.self.waterTime;
+        fireTime = GameManager.self.fireTime;
+    }
 
     public void TriggerAction()
     {
-        switch(platformtype)
+        
+        switch (platformtype)
         {
             case Enums.PlatformType.FEUER:
                 StartCoroutine("StartFire");
@@ -80,7 +89,7 @@ public class Platform : MonoBehaviour {
         fire.SetActive(true);
         fireActive = true;
         float timer = 0;
-        while (timer < fireTimer)
+        while (timer < fireTime)
         {
             yield return new WaitForSeconds(1f);
             timer += 1f;
