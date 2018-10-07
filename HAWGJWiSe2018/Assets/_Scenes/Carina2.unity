@@ -956,7 +956,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 48}
   m_EdgeRadius: 0
 --- !u!212 &129898365
 SpriteRenderer:
@@ -1782,7 +1782,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 748166183}
   hudPortrait: {fileID: 1742989504}
-  playerMoveNumber: 0
+  playerMoveNumber: 1
 --- !u!114 &263598549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2650,9 +2650,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  mainCamera: {fileID: 1306041504}
-  bottomLeft: {x: 13.8, y: 8}
-  topRight: {x: 82.5, y: 46.5}
+  mainCameraTransform: {fileID: 1306041504}
+  bottomLeft: {x: 27.5, y: 15.5}
+  topRight: {x: 68.5, y: 38.5}
+  minDistanceToRim: 0.2
 --- !u!114 &366409729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2665,7 +2666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  jumpHeight: 5
+  jumpHeight: 7
   maxGroundDistance: 1.5
   playerManager: {fileID: 366409734}
 --- !u!50 &366409730
@@ -2766,7 +2767,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 366409727}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.86, y: 31.12, z: 0}
+  m_LocalPosition: {x: 21.6, y: 13.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 366122406}
@@ -2791,7 +2792,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 0}
   hudPortrait: {fileID: 0}
-  playerMoveNumber: 0
+  playerMoveNumber: 2
 --- !u!1001 &371062855
 Prefab:
   m_ObjectHideFlags: 0
@@ -5945,7 +5946,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 48}
   m_EdgeRadius: 0
 --- !u!212 &842359641
 SpriteRenderer:
@@ -7400,7 +7401,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 54}
   m_EdgeRadius: 0
 --- !u!212 &1191045762
 SpriteRenderer:
@@ -8456,7 +8457,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 82
+  field of view: 56
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -8481,7 +8482,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1306041501}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 44.6, y: 24.9, z: -28.729025}
+  m_LocalPosition: {x: 32.6, y: 15.5, z: -28.729025}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9429,7 +9430,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 186855661}
   hudPortrait: {fileID: 1234721036}
-  playerMoveNumber: 0
+  playerMoveNumber: 1
 --- !u!114 &1519957472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11918,7 +11919,7 @@ MonoBehaviour:
   maxFireTime: 5
   hudCounter: {fileID: 1627005434}
   hudPortrait: {fileID: 617266446}
-  playerMoveNumber: 0
+  playerMoveNumber: 1
 --- !u!95 &1854583074
 Animator:
   serializedVersion: 3
@@ -12130,7 +12131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 54}
   m_EdgeRadius: 0
 --- !u!212 &1897718022
 SpriteRenderer:
