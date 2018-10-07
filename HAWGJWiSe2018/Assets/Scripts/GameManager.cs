@@ -9,14 +9,16 @@ public class GameManager : MonoBehaviour {
 
     public int maxCollectedItems;
     public bool randomColors;
+    public Enums.Scene currentScene;
+    public Animator animationImage;
 
-    public bool monsterAlife {  get;  set; }
+    private bool _monsterAlife;
 
     public PlayerManager[] players;
     private GameObject[] playerObjects;
     private int _numCollected;
     private bool[] _playersAlife;
-    private Enums.Scene currentScene;
+    //private Enums.Scene currentScene;
     private SelectPlayers selectPlayers;
     private int playerOrder;
     
@@ -26,7 +28,6 @@ public class GameManager : MonoBehaviour {
         if(!self)
         {
             self = this;
-            currentScene = Enums.Scene.TITLE_SCREEN;
         }
         else
         {
@@ -74,7 +75,8 @@ public class GameManager : MonoBehaviour {
 		if(Input.anyKeyDown && currentScene==Enums.Scene.TITLE_SCREEN)
         {
             currentScene = Enums.Scene.MENU;
-            SceneManager.LoadScene((int)Enums.Scene.MENU);
+            StartCoroutine("StartAnimation");
+            
         }
         else if(Input.GetButtonDown("Confirm")&&currentScene==Enums.Scene.MENU)
         {
@@ -97,8 +99,27 @@ public class GameManager : MonoBehaviour {
             {
                 //TODO: players win
                 Debug.Log("players win");
+                StartCoroutine("PlayersWin");
             }
         }
+    }
+
+    public IEnumerator StartAnimation()
+    {
+        animationImage.Play("NewStartAnimation_v1");
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene((int)Enums.Scene.MENU);
+    }
+
+    public IEnumerator PlayersWin()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene((int)Enums.Scene.WIN_PLAYERS);
+    }
+    public IEnumerator MonsterWins()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene((int)Enums.Scene.WIN_MONSTER);
     }
 
     public bool[] playersAlife
@@ -110,15 +131,26 @@ public class GameManager : MonoBehaviour {
         set
         {
             _playersAlife = value;
-            int counter=0;
-            for(int i=0;i<_playersAlife.Length;i++)
-            {
-                if (!_playersAlife[i])
-                    counter++;
-            }
-            if(counter==_playersAlife.Length)
+            if(!_playersAlife[0] && !_playersAlife[1] && !_playersAlife[2])
             {
                 //TODO Monster wins
+                StartCoroutine("MonsterWins");
+            }
+        }
+    }
+
+    public bool monsterAlife
+    {
+        get
+        {
+            return _monsterAlife;
+        }
+        set
+        {
+            _monsterAlife = value;
+            if(!_monsterAlife)
+            {
+                StartCoroutine("PlayersWin");
             }
         }
     }

@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Carina2.unity
     guid: 54163c287e1bf254386c6d9191a05a79
+  - enabled: 1
+    path: Assets/_Scenes/VictoryScreenMonster.unity
+    guid: 2b2c00f9edda6cc4eaf4706d1d55ffdf
+  - enabled: 1
+    path: Assets/_Scenes/VictoryScreen1.unity
+    guid: 62f5a48f8f6db0d46a80e41cdb00f303
   m_configObjects: {}
