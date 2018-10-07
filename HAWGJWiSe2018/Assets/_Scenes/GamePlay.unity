@@ -1456,9 +1456,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 179271361}
-  fire: {fileID: 8300000, guid: f35e3ec36630c3643bfa247475538fc1, type: 3}
-  water: {fileID: 8300000, guid: 5b5e79e23dd7c45489584d23cfc26e05, type: 3}
-  storm: {fileID: 8300000, guid: bd1e25440c9203a46bdcac77db9bfb17, type: 3}
+  fire: {fileID: 8300000, guid: 6c37833ea3897834594e58b710b0fa6b, type: 3}
+  water: {fileID: 8300000, guid: bc87823639d20dd48ba84ff8a778d373, type: 3}
+  storm: {fileID: 8300000, guid: eaba5894c827ef64c99f46a692b55ad5, type: 3}
 --- !u!82 &179271361
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6230,7 +6230,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: eab3a64894eca3a44980df94a7e7a5d0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 64359b391c8725b43b1662c53c2d080d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -10913,7 +10913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1717890780
 MonoBehaviour:
   m_ObjectHideFlags: 0
