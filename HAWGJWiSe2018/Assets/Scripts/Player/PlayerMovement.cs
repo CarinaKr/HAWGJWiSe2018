@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour {
     public float maxGroundDistance;
     public PlayerManager playerManager;
 
-    private Animator animator;
     private Rigidbody2D rb;
     private Vector2 movement;
     private int jumpCount;
@@ -20,11 +19,10 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         jumpCount = 0;
         playerMoveNumber = playerManager.playerMoveNumber;
-	}
+    }
 
     private void Update()
     {
@@ -44,7 +42,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        if (!playerManager.isAlive)
+        if (!playerManager.isAlive || playerManager.isEating)
             return;
 
         Move(Input.GetAxis("Horizontal"+playerMoveNumber)*speed);
@@ -57,12 +55,12 @@ public class PlayerMovement : MonoBehaviour {
         rb.velocity = new Vector2(inputX, rb.velocity.y);
         if(rb.velocity.magnitude!=0 && isGrounded)
         {
-            animator.SetBool("isWalking", true);
+            playerManager.animator.SetBool("isWalking", true);
             //Debug.Log("isWalking: true");
         }
         else
         {
-            animator.SetBool("isWalking", false);
+            playerManager.animator.SetBool("isWalking", false);
             //Debug.Log("isWalking: false");
         }
     }
@@ -82,7 +80,7 @@ public class PlayerMovement : MonoBehaviour {
             Debug.DrawRay(startPosition, Vector2.down * distance, Color.green);
             if (Physics2D.Raycast(startPosition, Vector2.down * maxGroundDistance, distance, LayerMask.GetMask("Platform")) && Mathf.Abs(rb.velocity.y) <=0.001f)
             {
-                Debug.Log(Mathf.Abs(rb.velocity.y));
+                //Debug.Log(Mathf.Abs(rb.velocity.y));
                 return true;
                 
             }
