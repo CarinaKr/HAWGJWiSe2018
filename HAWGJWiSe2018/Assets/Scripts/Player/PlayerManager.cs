@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour {
 
+    public Animator animator;
     public Camera mainCamera;
     public Color clr;
     public Enums.Colors mainColor;
@@ -15,6 +16,7 @@ public class PlayerManager : MonoBehaviour {
 
     //public int numCollected { get; set; }
     public bool isAlive {  get; protected set; }
+    public bool isEating;
     public int playerMoveNumber;//{ get; set; }
 
     private Plane[] planes;
@@ -26,12 +28,13 @@ public class PlayerManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         planes = GeometryUtility.CalculateFrustumPlanes(mainCamera);
         objCollider = GetComponent<Collider2D>();
         gameManager = GameManager.self;
         touchesFire = false;
         isAlive = true;
+        isEating = false;
         numberCollected = 5;
     }
 	

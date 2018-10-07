@@ -6,10 +6,23 @@ public class MonsterManager : PlayerManager {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (collision.transform.tag == "Player")
         {
+            Debug.Log("starts Eating");
+            StartCoroutine("Eat");
             collision.transform.GetComponent<PlayerManager>().Die();
         }
+    }
+
+    public IEnumerator Eat()
+    {
+        isEating = true;
+        animator.SetTrigger("startsEating");
+        print(Time.time);
+        yield return new WaitForSeconds(2);
+        print(Time.time);
+        isEating = false;
     }
 
     public override void OutOfFrame()
