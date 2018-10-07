@@ -10,6 +10,14 @@ public class MonsterManager : PlayerManager {
         if (collision.transform.tag == "Player")
         {
             Debug.Log("starts Eating");
+            if(collision.transform.position.x < transform.position.x)
+            {
+                gameObject.transform.eulerAngles = new Vector3(
+                                gameObject.transform.eulerAngles.x,
+                                gameObject.transform.eulerAngles.y + 180,
+                                gameObject.transform.eulerAngles.z);
+
+            }
             StartCoroutine("Eat");
             collision.transform.GetComponent<PlayerManager>().Die();
         }

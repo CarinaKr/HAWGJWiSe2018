@@ -112,8 +112,10 @@ public class PlayerManager : MonoBehaviour {
     {
         gameManager.playersAlife[playerNumber - 1] = false; // -1 for players start counting at 1
         isAlive = false;
+        Destroy(GetComponent("BoxCollider2D"));
         GetComponent<SpriteRenderer>().color = Color.grey;
         GetComponent<Animator>().SetBool("isWalking", false);
+        gameObject.SetActive(false);
         hudPortrait.enabled = true;
     }
     public virtual void Revive()
