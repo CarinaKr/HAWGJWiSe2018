@@ -121,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517154924288100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.372887, y: 9.655695, z: 0}
+  m_LocalPosition: {x: 2.95, y: 7.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4607422423171468}
@@ -308,11 +308,12 @@ MonoBehaviour:
   riseSpeed: 0.2
   riseDistance: 5
   waterTime: 3
-  fireTimer: 5
+  fireTimer: 4
   storm: {fileID: 1460941203276650}
   water: {fileID: 1155626582203660}
   fire: {fileID: 1708031175936702}
   glazeOverlay: {fileID: 1320849284894260}
+  fence: {fileID: 1785788545672726}
 --- !u!212 &212074412096842976
 SpriteRenderer:
   m_ObjectHideFlags: 1

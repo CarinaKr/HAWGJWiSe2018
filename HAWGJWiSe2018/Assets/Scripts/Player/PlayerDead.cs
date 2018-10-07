@@ -18,7 +18,7 @@ public class PlayerDead : MonoBehaviour {
     {
         //gameManager = GameManager.self;
         playerManager=GetComponent<PlayerManager>();
-        playerNumber = playerManager.playerNumber;
+        playerNumber = playerManager.playerMoveNumber;
     }
 
     // Update is called once per frame
