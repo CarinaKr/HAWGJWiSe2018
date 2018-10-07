@@ -68,16 +68,24 @@ public class PlayerManager : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.transform.tag=="Platform" && collision.gameObject.GetComponent<Platform>().fireActive && !touchesFire)
+        if(collision.transform.tag=="Platform")
         {
-            StartCoroutine("SurviveFire");
+            if (collision.gameObject.GetComponent<Platform>().fireActive && !touchesFire)
+            {
+                StartCoroutine("SurviveFire");
+            }
+            
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Platform" && collision.gameObject.GetComponent<Platform>().fireActive && touchesFire)
+        if (collision.transform.tag == "Platform")
         {
-            StopCoroutine("SurviveFire");
+            if(collision.gameObject.GetComponent<Platform>().fireActive && touchesFire)
+            {
+                StopCoroutine("SurviveFire");
+            }
+            
         }
     }
 

@@ -50,7 +50,11 @@ public class GameManager : MonoBehaviour {
     {
         if (self!=this) return;
 
-        if(level==(int)Enums.Scene.MENU)
+        if(level==(int)Enums.Scene.TITLE_SCREEN)
+        {
+            animationImage = GameObject.Find("AnimationImage").GetComponent<Animator>();
+        }
+        else if(level==(int)Enums.Scene.MENU)
         {
             selectPlayers = FindObjectOfType<SelectPlayers>();
         }
@@ -85,7 +89,12 @@ public class GameManager : MonoBehaviour {
             currentScene = Enums.Scene.GAMEPLAY;
             SceneManager.LoadScene((int)Enums.Scene.GAMEPLAY);
         }
-	}
+        else if (Input.GetButtonDown("Confirm") && (currentScene == Enums.Scene.WIN_PLAYERS || currentScene==Enums.Scene.WIN_MONSTER))
+        {
+            currentScene = Enums.Scene.TITLE_SCREEN;
+            SceneManager.LoadScene((int)Enums.Scene.TITLE_SCREEN);
+        }
+    }
 
     public int numberCollected
     {
@@ -115,11 +124,13 @@ public class GameManager : MonoBehaviour {
     public IEnumerator PlayersWin()
     {
         yield return new WaitForSeconds(0.5f);
+        currentScene = Enums.Scene.WIN_PLAYERS;
         SceneManager.LoadScene((int)Enums.Scene.WIN_PLAYERS);
     }
     public IEnumerator MonsterWins()
     {
         yield return new WaitForSeconds(0.5f);
+        currentScene = Enums.Scene.WIN_MONSTER;
         SceneManager.LoadScene((int)Enums.Scene.WIN_MONSTER);
     }
 

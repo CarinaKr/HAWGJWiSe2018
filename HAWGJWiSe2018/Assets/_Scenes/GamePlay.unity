@@ -6101,7 +6101,7 @@ MonoBehaviour:
   mainCameraTransform: {fileID: 1306041504}
   bottomLeft: {x: 20.5, y: 11.5}
   topRight: {x: 75.5, y: 42.5}
-  minDistanceToRim: 0.3
+  minDistanceToRim: 0.25
 --- !u!114 &861217172
 MonoBehaviour:
   m_ObjectHideFlags: 0
