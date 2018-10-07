@@ -8,6 +8,7 @@ public class SelectPlayers : MonoBehaviour {
     public Sprite[] portraits;
     public Image[] spaces;
     public Image leftArrow, rightArrow;
+    public Color activateColor, defaultColor;
 
     public int playerOrder { private set; get; }
     private bool needsReset;
@@ -22,6 +23,7 @@ public class SelectPlayers : MonoBehaviour {
 	void Update () {
         if ((Input.GetAxis("SelectionHorizontal") >=0.5 || Input.GetAxis("SelectionHorizontal") <=-0.5) && !needsReset)
         {
+            StartCoroutine("ClickArrow",Input.GetAxis("SelectionHorizontal"));
             needsReset = true;
             playerOrder = (playerOrder-(Mathf.RoundToInt(Input.GetAxis("SelectionHorizontal"))) % spaces.Length);
             if(playerOrder<0)
@@ -38,5 +40,20 @@ public class SelectPlayers : MonoBehaviour {
         {
             needsReset = false;
         }
+    }
+
+    public IEnumerator ClickArrow(float position)
+    {
+        if(position<0)
+        {
+            leftArrow.color = activateColor;
+        }
+        else if(position>0)
+        {
+            rightArrow.color = activateColor;
+        }
+        yield return new WaitForSeconds(0.15f);
+        leftArrow.color = defaultColor;
+        rightArrow.color = defaultColor;
     }
 }
