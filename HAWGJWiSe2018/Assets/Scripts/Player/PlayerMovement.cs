@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool _isGrounded;
     // private int playerNumber;
     private int playerMoveNumber;
+    private bool atWall;
 
 	// Use this for initialization
 	void Start () {
@@ -48,12 +49,28 @@ public class PlayerMovement : MonoBehaviour {
         Move(Input.GetAxis("Horizontal"+playerMoveNumber)*speed);
 	}
 
-    
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.transform.tag=="PlatformVertical")
+    //    {
+    //        atWall = true;
+    //    }
+    //}
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.transform.tag == "PlatformVertical")
+    //    {
+    //        atWall = false;
+    //    }
+    //}
+
 
     public void Move(float inputX)
     {
+
+        //rb.velocity = atWall ? new Vector2(inputX, rb.velocity.y)*0.2f : new Vector2(inputX, rb.velocity.y);
         rb.velocity = new Vector2(inputX, rb.velocity.y);
-        if(rb.velocity.magnitude!=0 && isGrounded)
+        if (rb.velocity.magnitude!=0 && isGrounded)
         {
             playerManager.animator.SetBool("isWalking", true);
             //Debug.Log("isWalking: true");
